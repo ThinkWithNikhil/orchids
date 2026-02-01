@@ -23,7 +23,7 @@ export function Header() {
       className="fixed top-0 left-0 right-0 z-50 flex h-16 w-full items-center backdrop-blur-md bg-[linear-gradient(to_bottom,var(--background)_0%,var(--background)_45%,transparent_100%)]"
       role="banner"
     >
-      <div className="flex h-full w-full max-w-7xl mx-auto items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="flex h-full w-full max-w-7xl mx-auto items-center justify-between px-4 sm:px-4 lg:px-6">
         {/* Left Section: Logo + Text */}
         <Link href="/" className="flex items-center gap-2 shrink-0" aria-label="Orchids home">
           <Image
