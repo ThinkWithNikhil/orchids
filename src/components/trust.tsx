@@ -17,7 +17,7 @@ const companies = [
 
 export function Trust() {
   return (
-    <section className="flex w-full flex-col gap-8 pt-10 sm:pt-10 lg:pt-14" aria-label="Trusted by">
+    <section className="flex w-full flex-col gap-8 pt-10 sm:pt-10 lg:pt-14 pb-14 sm:pb-14 lg:pb-24" aria-label="Trusted by">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center justify-center gap-10">
           {/* Heading */}
