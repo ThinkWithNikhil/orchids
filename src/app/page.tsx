@@ -1,3 +1,5 @@
+import { Divider } from "@/components/divider";
+import { Features } from "@/components/features";
 import { Header } from "@/components/header";
 import { HeroSection } from "@/components/hero-section";
 import { Trust } from "@/components/trust";
@@ -9,6 +11,8 @@ export default function Home() {
       <main className="flex min-h-screen w-full flex-col py-14 sm:py-14 lg:py-20 mt-8 sm:mt-16 lg:mt-16 bg-white">
         <HeroSection />
         <Trust />
+        <Divider />
+        <Features />
       </main>
     </div>
   );
