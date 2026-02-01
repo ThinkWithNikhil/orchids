@@ -3,6 +3,7 @@
 import { ChevronDownIcon } from "lucide-react";
 
 import { Awards } from "@/components/awards";
+import { HeroDescription } from "@/components/hero-description";
 import { Button } from "@/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
 import {
@@ -23,11 +24,7 @@ export function HeroSection() {
             Orchids is the context-aware AI IDE that helps you ship the best code,
             faster
           </h1>
-          <p className="max-w-3xl text-lg font-medium text-balance font-sans text-muted-foreground">
-            Orchids collaborates with you like a human developer to capture the
-            full context to turn your ideas into code. Orchids is the best way to
-            build apps, games, tools, websites, UI, anything with AI.
-          </p>
+          <HeroDescription />
           <div>
             <ButtonGroup orientation="horizontal">
               <Button variant="default" size="lg" asChild>

@@ -20,7 +20,7 @@ const AWARDS: readonly { line1: string; line2: string; href: string }[] = [
 
 export function Awards() {
   return (
-    <div className="flex flex-row flex-wrap gap-x-6 gap-y-2" role="list">
+    <div className="flex flex-row flex-wrap-reverse gap-x-6 gap-y-2" role="list">
       {AWARDS.map(({ line1, line2, href }) => (
         <a
           key={href}
