@@ -27,7 +27,7 @@ const features = [
 export function Features() {
   return (
     <section
-      className="flex w-full flex-col gap-8 pt-14 sm:pt-14 lg:pt-18"
+      className="flex w-full flex-col gap-8 pt-14 sm:pt-14 lg:pt-18 pb-14 sm:pb-14 lg:pb-24"
       aria-label="Features"
     >
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

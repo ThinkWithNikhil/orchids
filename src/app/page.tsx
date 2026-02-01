@@ -1,3 +1,4 @@
+import { CtaSection } from "@/components/cta-section";
 import { Divider } from "@/components/divider";
 import { Features } from "@/components/features";
 import { Header } from "@/components/header";
@@ -13,6 +14,9 @@ export default function Home() {
         <Trust />
         <Divider />
         <Features />
+        <Divider />
+        <CtaSection />
+        <Divider />
       </main>
     </div>
   );
