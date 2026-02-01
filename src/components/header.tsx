@@ -33,7 +33,7 @@ export function Header() {
             height={24}
             className="size-6"
           />
-          <span className="text-xl font-semibold text-foreground lowercase tracking-normal">
+          <span className="text-xl font-semibold text-foreground lowercase tracking-normal mb-1">
             orchids
           </span>
         </Link>

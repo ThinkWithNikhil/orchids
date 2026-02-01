@@ -1,6 +1,7 @@
 import { CtaSection } from "@/components/cta-section";
 import { Divider } from "@/components/divider";
 import { Features } from "@/components/features";
+import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { HeroSection } from "@/components/hero-section";
 import { Trust } from "@/components/trust";
@@ -18,6 +19,7 @@ export default function Home() {
         <CtaSection />
         <Divider />
       </main>
+      <Footer />
     </div>
   );
 }
