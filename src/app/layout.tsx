@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${libreBaskerville.variable} antialiased`}
+        className={`${inter.variable} ${libreBaskerville.variable} antialiased transition-all duration-300`}
       >
         {children}
       </body>
