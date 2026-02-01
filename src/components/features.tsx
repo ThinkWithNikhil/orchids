@@ -9,42 +9,35 @@ interface FeatureProps {
 
 function Feature({ title, description, videoSrc, bgImageSrc }: FeatureProps) {
   return (
-    <section className="w-full bg-brand-50 py-12 px-6 sm:px-12 lg:px-24 mb-6">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <section className="w-full bg-brand-50 py-20 px-4 sm:px-6 lg:px-8 first:pt-0 last:pb-24">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         {/* Media Side (Left) */}
-        <div className="relative aspect-video w-full rounded-2xl overflow-hidden shadow-2xl group">
-          {/* Background Image */}
-          <div className="absolute inset-0 z-0">
-            <Image
-              src={bgImageSrc}
-              alt=""
-              fill
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
-              priority
+        <div 
+          className="relative w-full aspect-[4/3] sm:aspect-video lg:aspect-square xl:aspect-video flex items-center justify-center bg-cover bg-center rounded-2xl overflow-hidden py-12 px-6 sm:px-12 group transition-all duration-500 hover:shadow-xl shadow-lg border border-brand-100"
+          style={{ backgroundImage: `url('${bgImageSrc}')` }}
+        >
+          {/* Video Container (matching Hero demo style) */}
+          <div className="w-full relative z-10 rounded-xl overflow-hidden shadow-2xl ring-1 ring-black/10 bg-black/50 backdrop-blur-sm transition-transform duration-500 group-hover:scale-[1.02]">
+            <video
+              src={videoSrc}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full block object-contain"
             />
           </div>
           
-          {/* Video on top */}
-          <div className="relative z-10 w-full h-full p-4 sm:p-8 flex items-center justify-center">
-             <div className="w-full h-full rounded-xl overflow-hidden border border-white/20 shadow-xl bg-black/40 backdrop-blur-sm">
-                <video
-                  src={videoSrc}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-full object-cover"
-                />
-             </div>
-          </div>
+          {/* Subtle overlay to enhance contrast */}
+          <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
         </div>
 
         {/* Text Side (Right) */}
-        <div className="flex flex-col gap-6 text-left max-w-xl">
-          <h2 className="text-3xl sm:text-4xl font-serif text-brand-950 leading-tight">
+        <div className="flex flex-col gap-6 lg:pl-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight tracking-tight">
             {title}
           </h2>
-          <p className="text-lg text-brand-900/70 leading-relaxed font-sans">
+          <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed font-sans max-w-lg">
             {description}
           </p>
         </div>
@@ -76,7 +69,7 @@ const features = [
 
 export function FeaturesSection() {
   return (
-    <div className="w-full py-12">
+    <div className="w-full bg-brand-50">
       {features.map((feature, index) => (
         <Feature key={index} {...feature} />
       ))}
