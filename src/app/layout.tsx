@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Libre_Baskerville } from "next/font/google";
 import "./globals.css";
+import { VideoPreload } from "@/components/video-preload";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -28,6 +29,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${libreBaskerville.variable} antialiased transition-all duration-300`}
       >
+        <VideoPreload />
         {children}
       </body>
     </html>

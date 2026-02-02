@@ -84,6 +84,7 @@ function TermTrigger({
             loop
             playsInline
             autoPlay
+            preload="auto"
             className="h-auto w-full object-contain"
           />
         </HoverCardContent>
@@ -98,6 +99,22 @@ export function HeroDescription() {
   const hasHover = useHasHover();
   const [modalOpen, setModalOpen] = useState(false);
   const [modalVideo, setModalVideo] = useState<string | null>(null);
+
+  // Prefetch all hover videos on component mount for faster hover interaction
+  useEffect(() => {
+    TERMS.forEach(({ video }) => {
+      // Check if link already exists to avoid duplicates
+      const existingLink = document.querySelector(`link[rel="prefetch"][href="${video}"]`);
+      if (!existingLink) {
+        const link = document.createElement("link");
+        link.rel = "prefetch";
+        link.href = video;
+        link.as = "video";
+        link.type = "video/mp4";
+        document.head.appendChild(link);
+      }
+    });
+  }, []);
 
   const openModal = useCallback((src: string) => {
     setModalVideo(src);
@@ -144,6 +161,7 @@ export function HeroDescription() {
                 loop
                 playsInline
                 autoPlay
+                preload="auto"
                 className="h-auto w-full object-contain"
               />
             </div>

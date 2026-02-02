@@ -67,6 +67,7 @@ export function HeroSection() {
                 muted
                 loop
                 playsInline
+                preload="auto"
                 className="w-full h-auto block object-contain"
               />
             </div>
