@@ -7,7 +7,7 @@ import {
   PanelsTopLeft,
   SquareDashedMousePointer,
 } from "lucide-react";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import {
@@ -47,17 +47,21 @@ function TermTrigger({
   icon: Icon,
   onOpenModal,
   hasHover,
+  onWarmVideos,
 }: {
   term: string;
   video: string;
   icon: React.ComponentType<{ className?: string }>;
   onOpenModal: (src: string) => void;
   hasHover: boolean;
+  onWarmVideos?: () => void;
 }) {
   const trigger = (
     <button
       type="button"
       onClick={() => onOpenModal(video)}
+      onMouseEnter={onWarmVideos}
+      onFocus={onWarmVideos}
       className={cn(
         "inline-flex items-center gap-1 rounded px-0.5 py-0 border-b-2 border-dotted border-muted-foreground/60",
         "text-lg font-medium font-sans text-muted-foreground",
@@ -100,21 +104,50 @@ export function HeroDescription() {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalVideo, setModalVideo] = useState<string | null>(null);
 
-  // Prefetch all hover videos on component mount for faster hover interaction
+  const descriptionRef = useRef<HTMLParagraphElement | null>(null);
+  const [shouldWarmVideos, setShouldWarmVideos] = useState(false);
+
+  const hoverVideos = useMemo(() => TERMS.map(({ video }) => video), []);
+
+  const warmVideos = useCallback(() => {
+    setShouldWarmVideos(true);
+  }, []);
+
+  // Start warming as soon as the description is near/inside the viewport.
   useEffect(() => {
-    TERMS.forEach(({ video }) => {
-      // Check if link already exists to avoid duplicates
-      const existingLink = document.querySelector(`link[rel="prefetch"][href="${video}"]`);
-      if (!existingLink) {
-        const link = document.createElement("link");
-        link.rel = "prefetch";
-        link.href = video;
-        link.as = "video";
-        link.type = "video/mp4";
-        document.head.appendChild(link);
+    if (shouldWarmVideos) return;
+    const el = descriptionRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setShouldWarmVideos(true);
+          observer.disconnect();
+        }
+      },
+      // Start loading a bit before the user reaches the text.
+      { rootMargin: "250px 0px", threshold: 0.01 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [shouldWarmVideos]);
+
+  // Once mounted, trigger network fetches/buffering for hidden warmup videos.
+  useEffect(() => {
+    if (!shouldWarmVideos) return;
+    const warmupVideos = document.querySelectorAll<HTMLVideoElement>(
+      'video[data-video-warmup="true"]'
+    );
+    warmupVideos.forEach((v) => {
+      try {
+        v.load();
+      } catch {
+        // no-op
       }
     });
-  }, []);
+  }, [shouldWarmVideos]);
 
   const openModal = useCallback((src: string) => {
     setModalVideo(src);
@@ -128,7 +161,11 @@ export function HeroDescription() {
 
   return (
     <>
-      <p className="max-w-3xl text-lg font-medium text-balance font-sans text-muted-foreground">
+      <p
+        ref={descriptionRef}
+        onMouseEnter={warmVideos}
+        className="max-w-3xl text-lg font-medium text-balance font-sans text-muted-foreground"
+      >
         Orchids collaborates with you like a human developer to capture the full
         context to turn your ideas into code. Orchids is the best way to build{" "}
         {TERMS.map(({ term, video, icon }, i) => (
@@ -139,12 +176,32 @@ export function HeroDescription() {
               icon={icon}
               onOpenModal={openModal}
               hasHover={hasHover}
+              onWarmVideos={warmVideos}
             />
             {i < TERMS.length - 1 ? ", " : ""}
           </span>
         ))}
         , anything with AI.
       </p>
+
+      {/* Hidden warmup videos: keep them mounted to force real buffering before hover. */}
+      {shouldWarmVideos && (
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute h-px w-px overflow-hidden opacity-0"
+        >
+          {hoverVideos.map((video) => (
+            <video
+              key={video}
+              src={video}
+              preload="auto"
+              muted
+              playsInline
+              data-video-warmup="true"
+            />
+          ))}
+        </div>
+      )}
 
       <Dialog open={modalOpen} onOpenChange={(open) => !open && closeModal()}>
         <DialogContent
