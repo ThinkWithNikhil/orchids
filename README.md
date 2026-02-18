@@ -206,13 +206,11 @@ Built with Node.js 20+ and Next.js 16.
 
 ---
 
-## Design Engineer
+## Author
 
-**Nikhil Tirumalasetty** — Design Engineer
+**Nikhil Tirumalasetty**
 
 This landing page was built in 32 hours, focusing on the intersection of emotional design, technical performance, and conversion optimization. Every decision—from color choices to video preloading strategies—was made with both user psychology and technical execution in mind.
-
-**Connect**: [Portfolio](#) • [LinkedIn](#) • [X/Twitter](#)
 
 ---
 
