@@ -1,6 +1,4 @@
-# Orchids Landing Page — A Design Engineering Case Study
-
-**32 hours reimagining a product landing page through emotional design, SEO, and conversion optimization.**
+# Reimagined Orchids.app Landing Page
 
 [![Orchids Landing Page — Design Engineering Case Study](https://img.youtube.com/vi/m0Ldh-8i6WM/maxresdefault.jpg)](https://www.youtube.com/watch?v=m0Ldh-8i6WM)
 
@@ -8,7 +6,7 @@
 
 ## Project Overview
 
-Orchids is a context-aware AI IDE that helps developers ship better code, faster. This case study documents the complete redesign of the Orchids landing page—a 32-hour journey focused on emotional design, SEO optimization, product education, and conversion strategy.
+Orchids is a vibecodingf platform that helps anyone ship better code, faster. This case study documents the complete redesign of the Orchids landing page focused on emotional design, SEO optimization, product education, and conversion strategy.
 
 **Tech Stack**: Next.js 16, React 19, Tailwind CSS 4, Radix UI, Inter + Libre Baskerville fonts
 
