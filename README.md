@@ -1,21 +1,5 @@
 # Reimagined Orchids.app Landing Page
 
-## Video Walkthrough
-
-<div align="center">
-  <iframe 
-    width="800" 
-    height="450" 
-    src="https://www.youtube.com/embed/m0Ldh-8i6WM?autoplay=1&mute=1&loop=1&playlist=m0Ldh-8i6WM&controls=1&modestbranding=1" 
-    frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-    allowfullscreen
-    style="border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);"
-  ></iframe>
-</div>
-
-**Note**: GitHub READMEs strip iframe embeds for security. [View the autoplaying video here](https://www.youtube.com/watch?v=m0Ldh-8i6WM) or open [`demo.html`](./demo.html) in your browser for the full embedded experience.
-
 [![Orchids Landing Page — Design Engineering Case Study](https://img.youtube.com/vi/m0Ldh-8i6WM/maxresdefault.jpg)](https://www.youtube.com/watch?v=m0Ldh-8i6WM)
 
 ---
